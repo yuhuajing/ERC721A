@@ -111,20 +111,20 @@ contract ERC721A is IERC721A {
     // See {_packedOwnershipOf} implementation for details.
     //
     // Bits Layout:
-    // - [0..159]   `addr`
-    // - [160..223] `startTimestamp`
-    // - [224]      `burned`
-    // - [225]      `nextInitialized`
-    // - [232..255] `extraData`
+    // - [0..22]   `extraData`
+    // - [30] `nextInitialized`
+    // - [31]      `burned`
+    // - [32...95]      `startTimestamp`
+    // - [96..255] `addr`
     mapping(uint256 => uint256) private _packedOwnerships;
 
     // Mapping owner address to address data.
     //
     // Bits Layout:
-    // - [0..63]    `balance`
-    // - [64..127]  `numberMinted`
-    // - [128..191] `numberBurned`
-    // - [192..255] `aux`
+    // - [0..63]    `aux`
+    // - [64..127]  `numberBurned`
+    // - [128..191] `numberMinted`
+    // - [192..255] `balance`
     mapping(address => uint256) private _packedAddressData;
 
     // Mapping from token ID to approved address.
